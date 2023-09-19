@@ -14,20 +14,15 @@ $(document).ready(function () {
         <div class="menu-utilities">
           <nav>
             <ul class="menu_content">
-              @if (Auth::check())
               <li class="menu__item">
-                <a class="menu__link" href="/mypage">HOME</a>
+                <a class="menu__link" href="/home">Home</a>
               </li>
               <li class="menu__item">
-                <form class="form" action="/logout" method="post">
-                  @csrf
-                  <button class="menu__button">Logout</button>
-                </form>
+                <a class="menu__link" href="/register">Registration</a>
               </li>
               <li class="menu__item">
-                <a class="menu__link" href="/mypage">Mypage</a>
+                <a class="menu__link" href="/login">Login</a>
               </li>
-              @endif
             </ul>
           </nav>
         </div>

@@ -23,4 +23,8 @@ Route::get('/', [AuthController::class, 'index']);
 Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index']);
 });
-Route::get('/menu', [UserController::class, 'menu']);
+
+Route::get('/logout', function () {
+    auth()->logout();
+    return redirect('/login');
+})->name('logout');

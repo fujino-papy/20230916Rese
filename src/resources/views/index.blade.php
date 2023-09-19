@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.logined')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
