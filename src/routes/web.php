@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,6 @@ Route::get('/logout', function () {
     auth()->logout();
     return redirect('/login');
 })->name('logout');
+
+Route::get('/mypage',[UserController::class, 'home']);
+Route::get('/', [ShopController::class, 'index'])->name('index');

@@ -9,31 +9,33 @@
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('css')
-    <script src="{{ mix('js/main.js') }}"></script>
 </head>
 
 <body>
 <header>
-    <div class="overlay" id="js-overlay"></div>
-    <div class="modal" id="js-modal">
-
-        <div class="modal-close__wrap">
-        <button class="modal-close" id="js-close">
-        <a class="close-button">☓</a>
-        </button>
+    <div class="header">
+        <label class="open" for="pop-up">--<br>---<br>-</label>
+        <a class="header__logo" href="/">Rese</a>
+        <input type="checkbox" id="pop-up">
+        <div class="overlay">
+            <div class="window">
+                <label class="close" for="pop-up">☓</label>
+                <nav>
+            <ul class="menu_content">
+                <li class="menu__item">
+                <a class="menu__link" href="/">Home</a>
+                </li>
+                <li class="menu__item">
+                <a class="menu__link" href="/register">Registration</a>
+                </li>
+                <li class="menu__item">
+                <a class="menu__link" href="/login">Login</a>
+                </li>
+            </ul>
+            </nav>
+            </div>
         </div>
-    <div class="modal-content">
     </div>
-    </div>
-    </div>
-
-    <button class="modal-open" id="js-open">--<br>---<br>-</button>
-    <a class="header__logo" href="/">Rese</a>
-
-
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
-    <script src="{{ mix('js/main.js') }}"></script>
 </header>
 <main>
 

@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function menu()
+    public function home()
     {
-        return view('menu');
+        return view('mypage');
     }
 }
