@@ -20,11 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', [AuthController::class, 'index']);
-Route::middleware('auth')->group(function () {
-    Route::get('/', [AuthController::class, 'index']);
-});
-
 Route::get('/logout', function () {
     auth()->logout();
     return redirect('/login');

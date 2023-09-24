@@ -20,8 +20,8 @@ class CreateShopsTable extends Migration
             $table->foreignId('genres_id')->constrained()->cascadeOnDelete();
             $table->string('summary', 200)->nullable();
             $table->string('image', 200)->nullable();
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('created_at')->useCurrent()->nullable();;
+            $table->timestamp('updated_at')->useCurrent()->nullable();;
         });
     }
 
