@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\ReserveController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +27,10 @@ Route::get('/logout', function () {
     return redirect('/login');
 })->name('logout');
 
-Route::get('/mypage',[UserController::class, 'home']);
+Route::middleware('auth')->group(function () {
+    Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
+});
+Route::get('/detail/{shop}', [ShopController::class,'detail'])->name('detail');
 Route::get('/', [ShopController::class, 'index'])->name('index');
+Route::post('/reserve', [ReserveController::class, 'reserve'])->name('reserve');
+Route::post('/favorite/{shop}', [FavoriteController::class,'toggleFavorite'])->name('favorite.toggle');
