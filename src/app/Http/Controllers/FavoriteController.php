@@ -7,7 +7,25 @@ use App\Models\Favorite;
 
 class FavoriteController extends Controller
 {
-    public function toggleFavorite(Request $request, $shopId)
+public function favorite(Request $request, $shopId)
+    {
+        $userId = auth()->user()->id;
+
+        $favorite = Favorite::where('shops_id', $shopId)
+            ->where('users_id', $userId)
+            ->first();
+
+        if (!$favorite) {
+            $favorite = new Favorite();
+            $favorite->users_id = $userId;
+            $favorite->shops_id = $shopId;
+            $favorite->save();
+        }
+
+        return back(); // ページの再読み込み
+    }
+
+    public function favoriteDelete(Request $request, $shopId)
     {
         $userId = auth()->user()->id;
 
@@ -17,11 +35,6 @@ class FavoriteController extends Controller
 
         if ($favorite) {
             $favorite->delete();
-        } else {
-            $favorite = new Favorite();
-            $favorite->users_id = $userId;
-            $favorite->shops_id = $shopId;
-            $favorite->save();
         }
 
         return back(); // ページの再読み込み

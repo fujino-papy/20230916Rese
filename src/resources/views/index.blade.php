@@ -14,22 +14,32 @@
         </div>
         <div class="card__content">
             <h2 class="shop_name">{{ $shop->name }}</h2>
-
             <h2 class="card__ttl">
             #{{ $shop->genre->name }}
             <br>
             #{{ $shop->area->name }}
             </h2>
             <a href="{{ route('detail', $shop) }}" class="detail">詳しく見る</a>
-        </div>
-        <div class="favorite_button">
+            <div class="favorite_button">
             @if(auth()->check())
-                <form action="{{ route('favorite.toggle', $shop->id) }}" method="POST">
-            @csrf
-                <button type="submit" class="heart" >
-                </button>
-                </form>
+            @php
+                $isFavorite = auth()->user()->favorites->contains('shops_id', $shop->id);
+            @endphp
+
+                @if($isFavorite)
+                    <form action="{{ route('favorite.delete', $shop->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="heart"><img src="{{ asset('img/heart_on.png') }}" alt="on"></button>
+                    </form>
+                @else
+                    <form action="{{ route('favorite.add', $shop->id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="heart"><img src="{{ asset('img/heart_off.png') }}" alt="off"></button>
+                    </form>
+                @endif
             @endif
+            </div>
         </div>
     </div>
         @endforeach

@@ -33,4 +33,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/detail/{shop}', [ShopController::class,'detail'])->name('detail');
 Route::get('/', [ShopController::class, 'index'])->name('index');
 Route::post('/reserve', [ReserveController::class, 'reserve'])->name('reserve');
-Route::post('/favorite/{shop}', [FavoriteController::class,'toggleFavorite'])->name('favorite.toggle');
+Route::post('/favorite/delete', [FavoriteController::class, 'favoriteDelete'])->name('favoriteDelete');
+Route::post('/favorite', [FavoriteController::class,'favorite'])->name('favorite');
+
