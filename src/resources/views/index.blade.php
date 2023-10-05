@@ -7,8 +7,8 @@
 @section('content')
 
 <div class="list">
-        @foreach ($shops as $shop)
-    <div class="shop_card">
+    @foreach ($shops as $shop)
+        <div class="shop_card">
         <div>
             <img class="card_img" src={{ $shop->image }} alt="" />
         </div>
@@ -21,28 +21,23 @@
             </h2>
             <a href="{{ route('detail', $shop) }}" class="detail">詳しく見る</a>
             <div class="favorite_button">
-            @if(auth()->check())
-            @php
-                $isFavorite = auth()->user()->favorites->contains('shops_id', $shop->id);
-            @endphp
-
-                @if($isFavorite)
-                    <form action="{{ route('favorite.delete', $shop->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="heart"><img src="{{ asset('img/heart_on.png') }}" alt="on"></button>
-                    </form>
-                @else
-                    <form action="{{ route('favorite.add', $shop->id) }}" method="POST">
-                        @csrf
-                        <button type="submit" class="heart"><img src="{{ asset('img/heart_off.png') }}" alt="off"></button>
-                    </form>
+                @if(auth()->check())
+                    @if($shopFavorites[$shop->id])
+                        <form class="favoriteDelete" action="{{ route('favorite/delete' , $shop->id) }}" method="post">
+                            @csrf
+                            <button type="submit" class="heart"><img src="{{ asset('img/heart_on.png') }}" alt="on"></button>
+                        </form>
+                    @else
+                        <form class= "favorite" action="{{ route('favorite', $shop->id) }}" method="post">
+                            @csrf
+                            <button type="submit" class="heart"><img src="{{ asset('img/heart_off.png') }}" alt="off"></button>
+                        </form>
+                    @endif
                 @endif
-            @endif
             </div>
         </div>
-    </div>
-        @endforeach
+        </div>
+    @endforeach
 </div>
 
 @endsection
