@@ -9,10 +9,34 @@ use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+
         // ショップ一覧を取得
-        $shops = Shop::all();
+        $query = Shop::query();
+
+        // 店名での部分一致検索
+        if ($request->has('name')) {
+            $query->where('name', 'like', '%' . $request->input('name') . '%');
+        }
+
+        // ジャンルでの絞り込み
+        if ($request->has('genre')) {
+            $genre = $request->input('genre');
+            $query->whereHas('genre', function ($subQuery) use ($genre) {
+                $subQuery->where('name', 'like', '%' . $genre . '%');
+            });
+        }
+
+        // エリアでの絞り込み
+        if ($request->has('area')) {
+            $area = $request->input('area');
+            $query->whereHas('area', function ($subQuery) use ($area) {
+                $subQuery->where('name', 'like', '%' . $area . '%');
+            });
+        }
+
+        $shops = $query->get();
 
         // 現在のユーザーを取得
         $user = Auth::user();

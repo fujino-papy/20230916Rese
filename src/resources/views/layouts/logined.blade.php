@@ -16,10 +16,37 @@
     <div class="header">
         <label class="open" for="pop-up">--<br>---<br>-</label>
         <a class="header__logo" href="/">Rese</a>
+        <form action="{{ route('search') }}" method="GET">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="店名で検索">
+            </div>
+            <div class="form-group">
+                <select name="genre">
+                    <option value="">ジャンルで絞り込み</option>
+                    <!-- ジャンルのオプションをループで生成 -->
+                    @foreach ($genres as $genre)
+                        <option value="{{ $genre->name }}">{{ $genre->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="area">
+                    <option value="">エリアで絞り込み</option>
+                    <!-- エリアのオプションをループで生成 -->
+                    @foreach ($areas as $area)
+                        <option value="{{ $area->name }}">{{ $area->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">検索</button>
+            </div>
+        </form>
         <input type="checkbox" id="pop-up">
         <div class="overlay">
             <div class="window">
                 <label class="close" for="pop-up">☓</label>
+                @auth
                 <nav>
             <ul class="menu_content">
                 <li class="menu__item">
@@ -33,6 +60,21 @@
                 </li>
             </ul>
             </nav>
+            @else
+            <nav>
+            <ul class="menu_content">
+                <li class="menu__item">
+                <a class="menu__link" href="/">Home</a>
+                </li>
+                <li class="menu__item">
+                <a class="menu__link" href="/register">Registration</a>
+                </li>
+                <li class="menu__item">
+                <a class="menu__link" href="/login">Login</a>
+                </li>
+            </ul>
+            </nav>
+            @endauth
             </div>
         </div>
     </div>
