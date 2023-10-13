@@ -36,3 +36,4 @@ Route::post('/reserve', [ReserveController::class, 'reserve'])->name('reserve');
 Route::post('/favorite/{shop}', [FavoriteController::class,'favorite'])->name('favorite');
 Route::post('/favorite/delete/{shop}', [FavoriteController::class, 'favoriteDelete'])->name('favorite/delete');
 Route::get('/search', [ShopController::class, 'index'])->name('search');
+Route::post('/reserve/delete/{shop}', [UserController::class, 'reserveDelete'])->name('reserve/delete');

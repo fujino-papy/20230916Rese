@@ -18,14 +18,16 @@
         <a class="header__logo" href="/">Rese</a>
         <form action="{{ route('search') }}" method="GET">
             <div class="form-group">
-                <input type="text" name="name" placeholder="店名で検索">
+                <input type="text" name="name" placeholder="店名で検索" value="{{ urldecode(request('name')) }}">
             </div>
             <div class="form-group">
                 <select name="genre">
                     <option value="">ジャンルで絞り込み</option>
                     <!-- ジャンルのオプションをループで生成 -->
                     @foreach ($genres as $genre)
-                        <option value="{{ $genre->name }}">{{ $genre->name }}</option>
+                        <option value="{{ $genre->name }}" {{ request('genre') == $genre->name ? 'selected' : '' }}>
+                    {{ urldecode($genre->name) }}
+                </option>
                     @endforeach
                 </select>
             </div>
@@ -34,7 +36,9 @@
                     <option value="">エリアで絞り込み</option>
                     <!-- エリアのオプションをループで生成 -->
                     @foreach ($areas as $area)
-                        <option value="{{ $area->name }}">{{ $area->name }}</option>
+                        <option value="{{ $area->name }}" {{ request('area') == $area->name ? 'selected' : '' }}>
+                    {{ urldecode($area->name) }}
+                </option>
                     @endforeach
                 </select>
             </div>
