@@ -9,4 +9,10 @@ class Reserve extends Model
 {
     use HasFactory;
     protected $fillable = ['users_id', 'shops_id', 'date', 'time', 'number'];
+
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class, 'shops_id');
+    }
 }
+

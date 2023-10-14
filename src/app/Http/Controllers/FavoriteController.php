@@ -22,7 +22,7 @@ public function favorite(Request $request, $shopId)
             $favorite->save();
         }
 
-        return redirect('/'); // ページの再読み込み
+        return back(); // ページの再読み込み
     }
 
     public function favoriteDelete(Request $request, $shopId)
@@ -37,6 +37,7 @@ public function favorite(Request $request, $shopId)
             $favorite->delete();
         }
 
-        return redirect('/'); // ページの再読み込み
+        return back(); // ページの再読み込み
     }
+    
 }

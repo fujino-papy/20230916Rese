@@ -1,3 +1,11 @@
+.username{
+    text-align: center;
+
+}
+
+.reserve{
+    margin-left: 8%;
+}
 .reserve_list {
     float: left;
     width: 50%;
@@ -5,9 +13,36 @@
 
 .reserve_list_content{
     border: 1px solid #000;
-    background-color: blue;
+    border-radius: 10px;
+    background-color: #305DFF;
     margin: 5%;
+    margin-left: 15%;
     width: 50%;
+}
+
+.closs{
+    background-color: #305DFF;
+    border: none;
+}
+
+.delete_img{
+    width: 35px;
+}
+
+.reserve_title{
+    color:#fff;
+}
+.clock_img{
+    width: 35px;
+    color:#fff;
+}
+
+.reserve_deteil{
+    color: #fff;
+}
+
+.favorite{
+    margin-top: -30px;
 }
 .favorite_list {
     float: right;
@@ -46,7 +81,7 @@
     font-weight: bolder;
 }
 .heart {
-    width: 25%;
+    width: 70px;
     min-width: 40px;
     border: none;
 }
@@ -65,4 +100,9 @@
     text-wrap: nowrap;
     line-height: 30px;
     min-width: 65px;
+}
+
+.favorite_button {
+    text-align: right;
+    margin-top: -45px;
 }
