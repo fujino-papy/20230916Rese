@@ -1,6 +1,5 @@
 .username{
     text-align: center;
-
 }
 
 .reserve{
@@ -11,6 +10,10 @@
     width: 50%;
 }
 
+.reserve_number{
+    font-size: 20px;
+}
+
 .reserve_list_content{
     border: 1px solid #000;
     border-radius: 10px;
@@ -18,6 +21,35 @@
     margin: 5%;
     margin-left: 15%;
     width: 50%;
+    height: 260px;
+    min-width: 311px;
+}
+
+.reserve_list_header{
+    display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        position: relative;
+        margin-top: 15px;
+}
+
+.reserve_detail_tr{
+    line-height: 200%;
+}
+.reserve_detail_td{
+    padding-left: 60px;
+}
+.reserveDelete {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.reserveDelete button {
+    background-color: transparent;
+    /* ボタンを透明にする */
+    border: none;
 }
 
 .closs{
@@ -26,7 +58,8 @@
 }
 
 .delete_img{
-    width: 35px;
+        width: 35px;
+            color: #fff;
 }
 
 .reserve_title{
@@ -37,7 +70,13 @@
     color:#fff;
 }
 
-.reserve_deteil{
+.reserve_detail_table{
+    color: #fff;
+    margin-left: 40px;
+    margin-top: 25px;
+}
+.reserveDelete {
+    margin-left: 50%;
     color: #fff;
 }
 
@@ -55,6 +94,20 @@
     width: calc(40% - 20px);
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
     border-radius: 5%;
+}
+
+@media screen and (min-width: 1151px) {
+    .shop_card {
+        width: 40%;
+        /* 画面が1149px以下の場合は2つ横並び */
+    }
+}
+
+@media screen and (max-width: 1151px) {
+    .shop_card {
+        width: 65%;
+        /* スマホサイズの場合は1つ縦並び */
+    }
 }
 
 .favorite_list:after,
@@ -88,6 +141,7 @@
 
 .heart_img {
     width: 100%;
+    background-color: transparent;
 }
 
 .detail {

@@ -21,6 +21,9 @@ use App\Http\Controllers\FavoriteController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/registration/complete', function () {
+    return view('thanks');
+})->name('/registration/complete');
 
 Route::get('/logout', function () {
     auth()->logout();

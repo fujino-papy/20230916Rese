@@ -16,31 +16,31 @@
     <div class="header">
         <label class="open" for="pop-up">--<br>---<br>-</label>
         <a class="header__logo" href="/">Rese</a>
-        <form action="{{ route('search') }}" method="GET">
-            <div class="form-group">
-                <input type="text" name="name" placeholder="店名で検索" value="{{ urldecode(request('name')) }}">
-            </div>
-            <div class="form-group">
-                <select name="genre">
-                    <option value="">ジャンルで絞り込み</option>
-                    <!-- ジャンルのオプションをループで生成 -->
-                    @foreach ($genres as $genre)
-                        <option value="{{ $genre->name }}" {{ request('genre') == $genre->name ? 'selected' : '' }}>
-                    {{ urldecode($genre->name) }}
-                </option>
-                    @endforeach
-                </select>
-            </div>
+        <form action="{{ route('search') }}" method="GET" class="search-form">
             <div class="form-group">
                 <select name="area">
-                    <option value="">エリアで絞り込み</option>
+                    <option value="">All area</option>
                     <!-- エリアのオプションをループで生成 -->
                     @foreach ($areas as $area)
                         <option value="{{ $area->name }}" {{ request('area') == $area->name ? 'selected' : '' }}>
-                    {{ urldecode($area->name) }}
-                </option>
+                            {{ urldecode($area->name) }}
+                        </option>
                     @endforeach
                 </select>
+            </div>
+            <div class="form-group">
+                <select name="genre">
+                    <option value="">All genre</option>
+                    <!-- ジャンルのオプションをループで生成 -->
+                    @foreach ($genres as $genre)
+                        <option value="{{ $genre->name }}" {{ request('genre') == $genre->name ? 'selected' : '' }}>
+                            {{ urldecode($genre->name) }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Search..." value="{{ urldecode(request('name')) }}">
             </div>
             <div class="form-group">
                 <button type="submit">検索</button>

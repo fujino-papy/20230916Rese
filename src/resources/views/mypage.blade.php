@@ -12,31 +12,33 @@
 <div class="reserve_list">
         @foreach($reserves as $reserve)
         <div class="reserve_list_content">
-            <img class="clock_img" src="{{ asset('img/clock.png') }}" alt="clock">
-            <div class="reserve_title">
-            <h2>予約{{ $loop->iteration }}</h2>
+            <div class="reserve_list_header">
+                <img class="clock_img" src="{{ asset('img/clock.png') }}" alt="clock">
+                <div class="reserve_title">
+                <a class="reserve_number">予約{{ $loop->iteration }}</a>
+                </div>
+                <form class="reserveDelete" action="{{ route('reserve/delete' , $reserve->shops_id) }}" method="post">
+                                @csrf
+                    <button type="submit" class="closs"><img class="delete_img" src="{{ asset('img/delete.png') }}"></button>
+                </form>
             </div>
-            <form class="reserveDelete" action="{{ route('reserve/delete' , $reserve->shops_id) }}" method="post">
-                            @csrf
-                <button type="submit" class="closs"><img class="delete_img" src="{{ asset('img/delete.png') }}"></button>
-            </form>
-            <table class="reserve_deteil">
-            <tr>
-                <td>Shop</td>
-                <td>{{ $reserve->shop->name }}</td>
-            </tr>
-            <tr>
-                <td>Date</td>
-                <td>{{ $reserve->date }}</td>
-            </tr>
-            <tr>
-                <td>Time</td>
-                <td>{{ $reserve->time }}</td>
-            </tr>
-            <tr>
-                <td>Number</td>
-                <td>{{ $reserve->number }}<a>人</a></td>
-            </tr>
+            <table class="reserve_detail_table">
+                <tr class="reserve_detail_tr">
+                    <td>Shop</td>
+                    <td class="reserve_detail_td">{{ $reserve->shop->name }}</td>
+                </tr>
+                <tr class="reserve_detail_tr">
+                    <td>Date</td>
+                    <td class="reserve_detail_td">{{ $reserve->date }}</td>
+                </tr>
+                <tr class="reserve_detail_tr">
+                    <td>Time</td>
+                    <td class="reserve_detail_td">{{ $reserve->time }}</td>
+                </tr>
+                <tr class="reserve_detail_tr">
+                    <td>Number</td>
+                    <td class="reserve_detail_td">{{ $reserve->number }}<a>人</a></td>
+                </tr>
             </table>
         </div>
         @endforeach

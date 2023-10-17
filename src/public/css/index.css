@@ -59,3 +59,23 @@ text-align: center;
     line-height: 30px;
     min-width: 65px;
 }
+
+@media screen and (min-width: 768px) {
+    .shop_card {
+        width: 20%;
+        /* 画面が11150px以上の場合は4つ横並び */
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 468px) {
+    .shop_card {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .shop_card {
+        width: 100%;
+        /* スマホサイズの場合は1つ縦並び */
+    }
+}
