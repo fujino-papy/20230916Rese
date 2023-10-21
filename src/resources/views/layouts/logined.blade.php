@@ -18,7 +18,7 @@
         <a class="header__logo" href="/">Rese</a>
         <form action="{{ route('search') }}" method="GET" class="search-form">
             <div class="form-group">
-                <select name="area">
+                <select name="area" class="area">
                     <option value="">All area</option>
                     <!-- エリアのオプションをループで生成 -->
                     @foreach ($areas as $area)
@@ -29,7 +29,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <select name="genre">
+                <select name="genre" class="genre">
                     <option value="">All genre</option>
                     <!-- ジャンルのオプションをループで生成 -->
                     @foreach ($genres as $genre)
@@ -40,10 +40,14 @@
                 </select>
             </div>
             <div class="form-group">
-                <input type="text" name="name" placeholder="Search..." value="{{ urldecode(request('name')) }}">
+                <div class="search-input">
+                <input class="name" type="text" name="name" placeholder="Search..." value="{{ urldecode(request('name')) }}">
+                </div>
             </div>
             <div class="form-group">
-                <button type="submit">検索</button>
+                <div class="search-button-container">
+                <button type="submit" class="search-button">検索</button>
+                </div>
             </div>
         </form>
         <input type="checkbox" id="pop-up">

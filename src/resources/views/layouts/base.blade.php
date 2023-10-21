@@ -20,6 +20,7 @@
         <div class="overlay">
             <div class="window">
                 <label class="close" for="pop-up">☓</label>
+                @auth
                 <nav>
             <ul class="menu_content">
                 <li class="menu__item">
@@ -33,6 +34,21 @@
                 </li>
             </ul>
             </nav>
+            @else
+            <nav>
+            <ul class="menu_content">
+                <li class="menu__item">
+                <a class="menu__link" href="/">Home</a>
+                </li>
+                <li class="menu__item">
+                <a class="menu__link" href="/register">Registration</a>
+                </li>
+                <li class="menu__item">
+                <a class="menu__link" href="/login">Login</a>
+                </li>
+            </ul>
+            </nav>
+            @endauth
             </div>
         </div>
     </div>

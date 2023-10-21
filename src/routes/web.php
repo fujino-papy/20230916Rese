@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +26,17 @@ Route::get('/registration/complete', function () {
     return view('thanks');
 })->name('/registration/complete');
 
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
 Route::get('/logout', function () {
     auth()->logout();
     return redirect('/login');
 })->name('logout');
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
 
 Route::middleware('auth')->group(function () {
     Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
