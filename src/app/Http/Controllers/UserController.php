@@ -5,21 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Favorite;
 use App\Models\Reserve;
+use Carbon\Carbon;
 
 
 class UserController extends Controller
 {
     public function myPage(Request $request)
     {
-        $user = $request->user(); // ログインユーザーを取得
+        $user = $request->user();
 
-        // ユーザーのお気に入り情報を取得
         $favorites = Favorite::where('users_id', $user->id)->with('shop')->get();
 
-        // ユーザーの予約情報を取得して、日付の近い順にソート
         $reserves = Reserve::where('users_id', $user->id)
             ->orderBy('date', 'asc')
             ->get();
+
+        foreach ($reserves as $reserve) {
+            $reserve->time = Carbon::parse($reserve->time)->format('H:i');
+        }
+
 
         return view('mypage', compact('favorites', 'reserves'));
     }

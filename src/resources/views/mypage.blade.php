@@ -8,6 +8,7 @@
 
 <h1 class="username">{{ Auth::user()->name }}さん</h1>
 
+<div class="reserve-container">
 <H1 class="reserve">予約状況</H1>
 <div class="reserve_list">
         @foreach($reserves as $reserve)
@@ -43,7 +44,9 @@
         </div>
         @endforeach
 </div>
+</div>
 
+<div class="favorite-container">
 <h1 class="favorite">お気に入り店舗</h1>
 <div class="favorite_list">
     <div class="favorite_list_content">
@@ -71,5 +74,6 @@
         </div>
     @endforeach
     </div>
+</div>
 </div>
 @endsection

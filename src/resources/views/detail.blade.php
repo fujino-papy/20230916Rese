@@ -24,16 +24,61 @@
             @csrf
             <div class="form-group">
                 <label for="date">予約日</label>
-                <input type="date" id="date" name="date" required>
+                @php
+                // 本日の日付を取得
+                $today = now();
+                // 本日の日付をYYYY-MM-DD形式にフォーマット
+                $todayFormatted = $today->format('Y-m-d');
+                @endphp
+                <input type="date" id="date" name="date" required value="{{ $todayFormatted }}">
             </div>
             <div class="form-group">
                 <label for="time">予約時間</label>
-                <input type="time" id="time" name="time" required>
+                <select id="time" name="time" required>
+                @for ($hour = 18; $hour <= 24; $hour++)
+                    @for ($minute = 0; $minute <= 45; $minute += 15)
+                        <option value="{{ sprintf('%02d', $hour) }}:{{ sprintf('%02d', $minute) }}">
+                            {{ sprintf('%02d', $hour) }}:{{ sprintf('%02d', $minute) }}
+                        </option>
+                    @endfor
+                @endfor
+                @for ($hour = 1; $hour <= 2; $hour++)
+                    @for ($minute = 0; $minute <= 45; $minute += 15)
+                        <option value="{{ sprintf('%02d', $hour) }}:{{ sprintf('%02d', $minute) }}">
+                            {{ sprintf('%02d', $hour) }}:{{ sprintf('%02d', $minute) }}
+                        </option>
+                    @endfor
+                @endfor
+                </select>
             </div>
             <div class="form-group">
-                <label for="number">人数</label>
-                <input type="number" id="number" name="number" required>
+                        <label for="number">人数</label>
+                        <select id="number" name="number" required>
+                @for ($i = 1; $i <= 40; $i++)
+                    <option value="{{ $i }}">{{ $i }}</option>
+                @endfor
+            </select>
             </div>
+
+            <table class="reserve_detail_table">
+                <tr class="reserve_detail_tr">
+                    <td>Shop</td>
+                    <td class="reserve_detail_td">{{ $shop->name }}</td>
+                </tr>
+                <tr class="reserve_detail_tr">
+                    <td>Date</td>
+                    <td class="reserve_detail_td"></td>
+                </tr>
+                <tr class="reserve_detail_tr">
+                    <td>Time</td>
+                    <td class="reserve_detail_td"></td>
+                </tr>
+                <tr class="reserve_detail_tr">
+                    <td>Number</td>
+                    <td class="reserve_detail_td"><a>人</a></td>
+                </tr>
+            </table>
+
             <input type="hidden" name="shops_id" value="{{ $shop->id }}">
             <button type="submit">予約する</button>
         </form>
