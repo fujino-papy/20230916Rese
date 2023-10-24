@@ -110,35 +110,89 @@ body{
     margin-top: 3%;
     margin-left: auto;
     margin-right: 10%;
-    width: 15%;
+    width: 50%;
 }
 .form-group {
     display: inline-block;
     max-width: 80%;
 }
 .name{
-    width: 80px;
-    margin-right: 20px;
-    margin-left: 5px;
+    border: none;
+    height: 30px;
+    margin-right: 3px;
+    border-radius: 0  15px  15px 0;
+    box-shadow: 2px 5px 3px gray;
 }
-.search-button-container{
-    width: 50px;
+
+.area{
+    border: none;
+    height: 30px;
+    border-radius: 15px 0 0 15px;
+    box-shadow: 5px 5px 3px gray;
+}
+
+.genre{
+    border: none;
+    height: 30px;
+    box-shadow: 5px 5px 3px gray;
 }
 .search-button{
     text-align: right;
+    border: none;
+background-color: #f0f0f0;
 }
-
+.search{
+    border: none;
+background-color: #f0f0f0;
+}
+.search_img{
+    width: 25px;
+    color: #f0f0f0;
+}
+.alert{
+    display: flex;
+    justify-content: center;
+    color: #fff;
+}
 
 @media (max-width: 768px) {
     .search-form {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
     .form-group {
+        width: 35%; /* 各form-groupは幅の50%を占める */
         display: block;
-        max-width: 100%;
+        margin-bottom: 10px; /* form-group間にスペースを追加 */
+    }
+
+    .name {
+        margin: 0; /* マージンを削除し、入力フィールドとボタンを整列させる */
+        border-radius: 0;
+        box-shadow: none;
+        width: 100%;
+        box-shadow: 2px 5px 3px gray;
+        border-radius: 10px;
+    }
+
+        .area {
+            border: none;
+            width: 100%;
+            height: 30px;
+            border-radius: 15px 0 0 15px;
+            box-shadow: 5px 5px 3px gray;
+        }
+        .genre {
+            border: none;
+            width: 100%;
+            height: 30px;
+            box-shadow: 5px 5px 3px gray;
+            border-radius: 0 15px 15px 0;
+        }
+
+    .search {
+        width: 100%; /* ボタンをフル幅にする */
+        margin-left: 10px;
     }
 }

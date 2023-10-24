@@ -48,7 +48,6 @@
 
 .reserveDelete button {
     background-color: transparent;
-    /* ボタンを透明にする */
     border: none;
 }
 
@@ -99,14 +98,12 @@
 @media screen and (min-width: 1151px) {
     .shop_card {
         width: 40%;
-        /* 画面が1149px以下の場合は2つ横並び */
     }
 }
 
 @media screen and (max-width: 1151px) {
     .shop_card {
         width: 65%;
-        /* スマホサイズの場合は1つ縦並び */
     }
 }
 

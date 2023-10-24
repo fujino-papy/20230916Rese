@@ -5,41 +5,43 @@
 @endsection
 
 @section('content')
-<div class="login__content">
-    <div class="login-form__heading">
-    <a class="login_logo">Login</a>
-    </div>
-    <form class="form" action="/login" method="post">
-        @csrf
-    <div class="form__group">
-        <div class="form__group-content">
-        <div class="form__input--text">
-            <img src="{{ asset('img/mail.png') }}" alt="mail">
-            <input class="input" type="email" name="email" value="{{ old('email') }}" placeholder="Email" />
+<div class="login">
+    <div class="login__content">
+        <div class="login-form__heading">
+        <a class="login_logo">Login</a>
         </div>
-        <div class="form__error">
-            @error('email')
-            {{ $message }}
-            @enderror
+        <form class="form" action="/login" method="post">
+            @csrf
+        <div class="form__group">
+            <div class="form__group-content">
+            <div class="form__input--text">
+                <img class="icon" src="{{ asset('img/mail.png') }}" alt="mail">
+                <input class="input" type="email" name="email" value="{{ old('email') }}" placeholder="Email" />
+            </div>
+            <div class="form__error">
+                @error('email')
+                {{ $message }}
+                @enderror
+            </div>
+            </div>
         </div>
+        <div class="form__group">
+            <div class="form__group-content">
+            <div class="form__input--text">
+                <img class="icon" src="{{ asset('img/pass.png') }}" alt="pass">
+                <input class="input" type="password" name="password" placeholder="Password" />
+            </div>
+            <div class="form__error">
+                @error('password')
+                {{ $message }}
+                @enderror
+            </div>
+            </div>
         </div>
-    </div>
-    <div class="form__group">
-        <div class="form__group-content">
-        <div class="form__input--text">
-            <img src="{{ asset('img/pass.png') }}" alt="pass">
-            <input class="input" type="password" name="password" placeholder="Password" />
+        <div class="form__button">
+            <button class="form__button-submit" type="submit">ログイン</button>
         </div>
-        <div class="form__error">
-            @error('password')
-            {{ $message }}
-            @enderror
-        </div>
-        </div>
-    </div>
-    <div class="form__button">
-        <button class="form__button-submit" type="submit">ログイン</button>
-    </div>
-    </form>
+        </form>
+</div>
 </div>
 @endsection

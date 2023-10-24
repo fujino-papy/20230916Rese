@@ -16,9 +16,11 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|',
-            'password' => 'required|string|min:8',
+            'name' => 'required|string|max:191',
+            'email' => 'required|email|unique:users|max191',
+            'password' => 'required|string|min:8|max:191',
+        ], [
+            'email.unique' => '入力されたメールアドレスは既に登録されています。',
         ]);
 
         if ($validator->fails()) {

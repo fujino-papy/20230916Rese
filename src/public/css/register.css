@@ -1,4 +1,4 @@
-main {
+.register {
     display: flex;
     justify-content: center;
     margin-top: 10%;
@@ -49,7 +49,7 @@ main {
     width: 10vh;
 }
 
-img {
+.icon {
     height: 30px;
     width: 30px;
 }
