@@ -53,10 +53,13 @@ http://localhost/
 ## 環境構築
 ・リポジトリクローン
 $ git clone git@github.com:fujino-papy/20230916Rese.git
+
 ・Dockerコンテナ起動
 $ docker-compose up -d --build
 
 ## その他
 テスト環境
+
 Googlechrome・Microsoft Edge・Firefox
+
 上記３種のブラウザで動作確認済み
