@@ -19,7 +19,7 @@
                 <a class="reserve_number">予約{{ $loop->iteration }}</a>
                 </div>
                 <form class="reserveDelete" action="{{ route('reserve/delete' , $reserve->shops_id) }}" method="post">
-                                @csrf
+                    @csrf
                     <button type="submit" class="closs"><img class="delete_img" src="{{ asset('img/delete.png') }}"></button>
                 </form>
             </div>
@@ -41,7 +41,40 @@
                     <td class="reserve_detail_td">{{ $reserve->number }}<a>人</a></td>
                 </tr>
             </table>
-        </div>
+            <h3 class="reserve-change">予約変更</h3>
+            <form class="reserve-change-form" action="{{ route('update', $reserve->id) }}" method="post">
+            @csrf
+            @method('put')
+            <!-- 日付、時間、人数の入力フィールド -->
+            <label class="reserve-change-title" for="date">Date:</label>
+            <input type="date" name="date" value="{{ $reserve->date }}">
+            <br>
+            <label class="reserve-change-title" for="time">Time:</label>
+            <select class="time" id="time" name="time" required>
+                @for ($hour = 18; $hour <= 23; $hour++)
+                    @for ($minute = 0; $minute <= 45; $minute += 15)
+                        @php
+                        $time = sprintf('%02d', $hour) . ':' . sprintf('%02d', $minute);
+                        @endphp
+                        <option value="{{ $time }}">
+                            {{ $time }}
+                        </option>
+                    @endfor
+                @endfor
+                    {{-- 最後の選択肢を追加 --}}
+                    <option value="00:00">00:00</option>
+                </select>
+                <br>
+            <label class="reserve-change-title" for="number">Number:</label>
+            <select class="number" id="number" name="number" required>
+                @for ($i = 1; $i <= 40; $i++)
+                    <option value="{{ $i }}">{{ $i }}人</option>
+                @endfor
+            </select>
+            <br>
+            <button class="reserve-change_button" type="submit">変更</button>
+            </form>
+            </div>
         @endforeach
 </div>
 </div>

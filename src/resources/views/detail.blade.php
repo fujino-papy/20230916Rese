@@ -21,7 +21,6 @@
         <form action="{{ route('reserve') }}" method="POST">
             @csrf
             <div class="form-group">
-
                 @php
                 $today = now();
                 $todayFormatted = $today->format('Y-m-d');
@@ -47,7 +46,6 @@
             </div>
             <br>
             <div class="form-group">
-
                         <select class="number" id="number" name="number" required>
                 @for ($i = 1; $i <= 40; $i++)
                     <option value="{{ $i }}">{{ $i }}人</option>

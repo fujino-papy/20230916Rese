@@ -40,4 +40,21 @@ class ReserveController extends Controller
         return view('done');
     }
 
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'date' => 'required|date',
+            'time' => 'required',
+            'number' => 'required|integer',
+        ]);
+
+        $reserve = Reserve::find($id);
+        $reserve->date = $request->input('date');
+        $reserve->time = $request->input('time');
+        $reserve->number = $request->input('number');
+        $reserve->save();
+
+        return redirect('/mypage');
+    }
+
 }

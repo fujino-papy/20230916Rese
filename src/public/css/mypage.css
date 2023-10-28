@@ -20,8 +20,8 @@
     background-color: #305DFF;
     margin: 5%;
     margin-left: 15%;
-    width: 50%;
-    height: 260px;
+    width: 70%;
+    height: 370px;
     min-width: 311px;
 }
 
@@ -77,6 +77,27 @@
 .reserveDelete {
     margin-left: 50%;
     color: #fff;
+}
+
+.reserve-change{
+    margin: 5px 0px 2px 40px;
+    color: #fff;
+}
+
+.reserve-change-title{
+    color: #fff;
+}
+
+.reserve-change-form{
+    margin-left: 40px;
+}
+
+.reserve-change_button{
+    border: 1px #000 solid;
+    background-color: #fff;
+    color: #305DFF;
+    font-weight: bold;
+    width: 45px;
 }
 
 .favorite{
