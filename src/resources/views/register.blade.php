@@ -11,7 +11,7 @@
         <a class="register_logo">Register</a>
         </div>
         <form class="form" action="/register" method="post">
-            @csrf
+        @csrf
         <div class="form__group">
             <div class="form__group-content">
             <div class="form__input--text">

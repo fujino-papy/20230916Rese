@@ -162,13 +162,13 @@ background-color: #f0f0f0;
         justify-content: flex-end;
     }
     .form-group {
-        width: 35%; /* 各form-groupは幅の50%を占める */
+        width: 35%;
         display: block;
-        margin-bottom: 10px; /* form-group間にスペースを追加 */
+        margin-bottom: 10px;
     }
 
     .name {
-        margin: 0; /* マージンを削除し、入力フィールドとボタンを整列させる */
+        margin: 0;
         border-radius: 0;
         box-shadow: none;
         width: 100%;
@@ -192,7 +192,7 @@ background-color: #f0f0f0;
         }
 
     .search {
-        width: 100%; /* ボタンをフル幅にする */
+        width: 100%;
         margin-left: 10px;
     }
 }

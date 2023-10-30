@@ -11,10 +11,8 @@
         <h2 class="shop_name">{{ $shop->name }}</h2>
         <img class="card_img" src={{ $shop->image }} alt="" />
         <p class="tag">#{{ $shop->genre->name }} #{{ $shop->area->name }}</p>
-
         <p class="shop_summary">{{ $shop->summary }}</p>
     </div>
-
     <div class="reserve_form">
         <h1 class="title">予約</h1>
         @auth
@@ -40,19 +38,17 @@
                         </option>
                     @endfor
                 @endfor
-                    {{-- 最後の選択肢を追加 --}}
                     <option value="00:00">00:00</option>
                 </select>
             </div>
             <br>
             <div class="form-group">
-                        <select class="number" id="number" name="number" required>
+                <select class="number" id="number" name="number" required>
                 @for ($i = 1; $i <= 40; $i++)
                     <option value="{{ $i }}">{{ $i }}人</option>
                 @endfor
             </select>
             </div>
-
             <table class="reserve_detail_table">
                 <tr class="reserve_detail_tr">
                     <td class="reserve_detail_td">Shop</td>
@@ -88,7 +84,6 @@
 </div>
     </div>
 </div>
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var dateInput = document.getElementById('date');
@@ -97,19 +92,15 @@
         var reservationTimeCell = document.getElementById('reservationTime');
         var numberSelect = document.getElementById('number');
         var reservationNumberCell = document.getElementById('reservationNumber');
-
         reservationDateCell.textContent = dateInput.value;
         reservationTimeCell.textContent = timeSelect.value;
         reservationNumberCell.textContent = numberSelect.value + ' 人';
-
         dateInput.addEventListener('input', function () {
             reservationDateCell.textContent = dateInput.value;
         });
-
         timeSelect.addEventListener('change', function () {
             reservationTimeCell.textContent = timeSelect.value;
         });
-
         numberSelect.addEventListener('change', function () {
             reservationNumberCell.textContent = numberSelect.value + ' 人';
         });

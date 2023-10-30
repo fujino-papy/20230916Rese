@@ -45,7 +45,6 @@
             <form class="reserve-change-form" action="{{ route('update', $reserve->id) }}" method="post">
             @csrf
             @method('put')
-            <!-- 日付、時間、人数の入力フィールド -->
             <label class="reserve-change-title" for="date">Date:</label>
             <input type="date" name="date" value="{{ $reserve->date }}">
             <br>
@@ -61,7 +60,6 @@
                         </option>
                     @endfor
                 @endfor
-                    {{-- 最後の選択肢を追加 --}}
                     <option value="00:00">00:00</option>
                 </select>
                 <br>
